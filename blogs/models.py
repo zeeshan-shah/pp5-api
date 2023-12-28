@@ -9,7 +9,7 @@ class Blog(models.Model):
     description = models.TextField(max_length=500, verbose_name='Description')
     content = models.TextField(blank=True, verbose_name='Content')
     image = models.ImageField(
-        upload_to='images/', default='default/default_post_rgq6aq.jpg',
+        upload_to='images/', default='default/default_blog_hcaioi.png',
         verbose_name='Image'
         )
 
