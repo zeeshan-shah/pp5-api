@@ -2,6 +2,11 @@ from rest_framework import serializers
 from blogs.models import Blog  
 from likes.models import Like
 
+class BlogCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Blog
+        fields = ['category']
+
 class BlogSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -10,6 +15,7 @@ class BlogSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
+    
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -39,6 +45,6 @@ class BlogSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
             'title', 'content', 'image', 'like_id',
-            'likes_count', 'comments_count',
+            'likes_count', 'comments_count', 'category',
         ]
 

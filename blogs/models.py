@@ -1,7 +1,16 @@
+# In blogs/models.py
 from django.db import models
 from django.contrib.auth.models import User
 
 class Blog(models.Model):
+    CATEGORY_CHOICES = [
+        ('science', 'Science and Technology'),
+        ('politics', 'Politics'),
+        ('sports', 'Sports'),
+        ('travel', 'Travel'),
+        ('programming', 'Programming'),
+    ]
+
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blogs')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -11,7 +20,8 @@ class Blog(models.Model):
     image = models.ImageField(
         upload_to='images/', default='default/default_blog_hcaioi.png',
         verbose_name='Image'
-        )
+    )
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, verbose_name='Category')
 
     class Meta:
         ordering = ['-created_at']
@@ -23,4 +33,3 @@ class Blog(models.Model):
 
     def get_short_description(self):
         return self.description[:100] + ('...' if len(self.description) > 100 else '')
-
