@@ -42,7 +42,7 @@ REST_FRAMEWORK = {
     'DATETIME_FORMAT': '%d %b %Y',
 }
 
-if 'DEV' not in os.environ:
+if 'Re_DEV' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer',
     ]
@@ -64,7 +64,7 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEV' in os.environ
+DEBUG = 'DEV' in os.environ 
 
 ALLOWED_HOSTS = ['8000-zeeshanshah-pp5api-6tc1bmidqgm.ws-eu107.gitpod.io', os.environ.get('ALLOWED_HOST')]
 
