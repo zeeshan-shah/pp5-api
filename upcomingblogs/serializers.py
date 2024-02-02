@@ -6,9 +6,9 @@ class UpcomingBlogSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
-        request = self.context['request']
+        request = self.context.get('request')
         return request.user == obj.owner
 
     class Meta:
         model = UpcomingBlog
-        fields = ['id', 'owner', 'title', 'category', 'release_date']
+        fields = ['id', 'owner', 'is_owner', 'title', 'category', 'release_date']
