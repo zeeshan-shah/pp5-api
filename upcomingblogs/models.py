@@ -16,7 +16,7 @@ class UpcomingBlog(models.Model):
     release_date = models.DateField()
 
     class Meta:
-        ordering = ['-release_date']
+        ordering = ['release_date']
 
     def __str__(self):
         return f'{self.title} by {self.owner.username}'
