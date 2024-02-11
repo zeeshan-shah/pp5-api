@@ -6,15 +6,24 @@ from .models import Blog
 from .serializers import BlogSerializer, BlogCategorySerializer
 from django.http import Http404
 
+
 class BlogCategoryList(generics.ListAPIView):
+    """
+    API endpoint that returns a list of blog categories.
+    """
     serializer_class = BlogCategorySerializer
 
     def get_queryset(self):
+        """
+        Get queryset of blog categories.
+        """
         return [{'category': choice[0]} for choice in Blog.CATEGORY_CHOICES]
 
 
-
 class BlogList(generics.ListCreateAPIView):
+    """
+    API endpoint that returns a list of blogs or creates a new blog.
+    """
     serializer_class = BlogSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filter_backends = [
@@ -38,10 +47,13 @@ class BlogList(generics.ListCreateAPIView):
     ]
 
     def get_queryset(self):
+        """
+        Get queryset of blogs.
+        """
         category = self.kwargs.get('category')
-        print(f"Category from kwargs: {category}")
 
-        # Check if the category is valid based on the first elements of the tuples in CATEGORY_CHOICES
+        # Check if the category is valid based on the
+        # first elements of the tuples in CATEGORY_CHOICES
         if category not in [choice[0] for choice in Blog.CATEGORY_CHOICES]:
             raise Http404("Invalid category")
 
@@ -52,14 +64,17 @@ class BlogList(generics.ListCreateAPIView):
 
         if category:
             queryset = queryset.filter(category=category)
-            print(f"Filtered Queryset: {queryset}")
 
         return queryset
 
     def perform_create(self, serializer):
+        """
+        Perform creation of a new blog.
+        """
         category = self.kwargs.get('category')
-        
-        # Check if the category is valid based on the first elements of the tuples in CATEGORY_CHOICES
+
+        # Check if the category is valid based on the
+        #  first elements of the tuples in CATEGORY_CHOICES
         if category not in [choice[0] for choice in Blog.CATEGORY_CHOICES]:
             raise Http404("Invalid category")
 
@@ -67,6 +82,9 @@ class BlogList(generics.ListCreateAPIView):
 
 
 class BlogDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    API endpoint that retrieves, updates or deletes a specific blog.
+    """
     serializer_class = BlogSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Blog.objects.annotate(

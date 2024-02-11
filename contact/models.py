@@ -1,4 +1,3 @@
-# contact/models.py
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -16,18 +15,27 @@ CONTACT_CATEGORIES = (
     ('4', 'General Inquiry'),
 )
 
+
 class ContactTicket(models.Model):
+    """
+    Model representing a contact ticket.
+    """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    category = models.CharField(max_length=1, choices=CONTACT_CATEGORIES, default='1')
+    category = models.CharField(
+        max_length=1, choices=CONTACT_CATEGORIES, default='1')
     subject = models.CharField(max_length=255)
     message = models.TextField()
-    ticket_status = models.CharField(max_length=1, choices=TICKET_STATUSES, default='0')
+    ticket_status = models.CharField(
+        max_length=1, choices=TICKET_STATUSES, default='0')
     admin_response = models.TextField(blank=True, null=True)
 
     class Meta:
         ordering = ['-updated_at']
 
     def __str__(self):
+        """
+        String representation of the contact ticket.
+        """
         return f'Contact Ticket #{self.id} - {self.subject}'
