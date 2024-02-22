@@ -26,7 +26,7 @@ class ContactTicket(models.Model):
     category = models.CharField(
         max_length=1, choices=CONTACT_CATEGORIES, default='1')
     subject = models.CharField(max_length=255)
-    message = models.TextField()
+    message = models.TextField(max_length=2000)
     ticket_status = models.CharField(
         max_length=1, choices=TICKET_STATUSES, default='0')
     admin_response = models.TextField(blank=True, null=True)
