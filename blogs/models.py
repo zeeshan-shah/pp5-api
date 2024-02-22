@@ -21,7 +21,7 @@ class Blog(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255, verbose_name='Title')
     description = models.TextField(max_length=500, verbose_name='Description')
-    content = models.TextField(max_length=2500, blank=True, verbose_name='Content')
+    content = models.TextField(max_length=4000, blank=True, verbose_name='Content')
     image = models.ImageField(
         upload_to='images/', default='default/default_blog_hcaioi.png',
         verbose_name='Image'
