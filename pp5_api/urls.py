@@ -31,5 +31,5 @@ urlpatterns = [
     path('', include('followers.urls')),
     path('', include('upcomingblogs.urls')),
     path('', include('contact.urls')),
-
+    path('', include('advertisements.urls')),
 ]
