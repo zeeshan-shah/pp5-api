@@ -18,7 +18,7 @@ class Advertisement(models.Model):
         max_length=20, choices=ADVERTISEMENT_TYPES, verbose_name='Ad Type'
     )
     image = models.ImageField(
-        upload_to='images/', default='../ad-here.jpg',
+        upload_to='images/', default='../default-ad',
         verbose_name='Image'
     )
     video_url = models.URLField(
