@@ -13,6 +13,7 @@ CONTACT_CATEGORIES = (
     ('2', 'Technical Support'),
     ('3', 'Business Partnership'),
     ('4', 'General Inquiry'),
+    ('5', 'Advertise with Us'),
 )
 
 
