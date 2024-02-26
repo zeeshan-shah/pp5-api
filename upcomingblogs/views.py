@@ -8,6 +8,7 @@ class UpcomingBlogList(generics.ListCreateAPIView):
     """
     API endpoint that allows creation and listing of upcoming blogs.
     """
+
     serializer_class = UpcomingBlogSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
@@ -29,6 +30,7 @@ class UpcomingBlogDetail(generics.RetrieveUpdateDestroyAPIView):
     API endpoint that allows retrieving, updating, and
     deleting a specific upcoming blog.
     """
+
     serializer_class = UpcomingBlogSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
