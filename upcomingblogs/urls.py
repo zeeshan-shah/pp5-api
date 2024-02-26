@@ -3,13 +3,13 @@ from .views import UpcomingBlogList, UpcomingBlogDetail
 
 urlpatterns = [
     path(
-        'upcoming-blogs/',
+        "upcoming-blogs/",
         UpcomingBlogList.as_view(),
-        name='upcoming-blog-list'
+        name="upcoming-blog-list",
     ),
     path(
-        'upcoming-blogs/<int:pk>/',
+        "upcoming-blogs/<int:pk>/",
         UpcomingBlogDetail.as_view(),
-        name='upcoming-blog-detail'
+        name="upcoming-blog-detail",
     ),
 ]
