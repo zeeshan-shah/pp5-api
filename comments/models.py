@@ -4,9 +4,7 @@ from blogs.models import Blog
 
 
 class Comment(models.Model):
-    """
-    Comment model, related to User and Blog models.
-    """
+    """ Comment model, related to User and Blog models. """
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
