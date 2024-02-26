@@ -9,11 +9,12 @@ class CommentList(generics.ListCreateAPIView):
     """
     API endpoint that allows listing and creating comments.
     """
+
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Comment.objects.all()
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['blog']
+    filterset_fields = ["blog"]
 
     def perform_create(self, serializer):
         """
@@ -27,6 +28,7 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     API endpoint that allows retrieving, updating,
     and deleting a specific comment.
     """
+
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = CommentDetailSerializer
     queryset = Comment.objects.all()
