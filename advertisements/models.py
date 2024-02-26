@@ -2,9 +2,7 @@ from django.db import models
 
 
 class Advertisement(models.Model):
-    """
-    Model representing an advertisement.
-    """
+    """ Model representing an advertisement."""
 
     ADVERTISEMENT_TYPES = [
         ("banner", "Banner Ad"),
