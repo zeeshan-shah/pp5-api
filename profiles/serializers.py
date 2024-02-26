@@ -4,9 +4,7 @@ from followers.models import Follower
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    """
-    Serializer for the Profile model.
-    """
+    """ Serializer for the Profile model. """
 
     owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
@@ -17,8 +15,10 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def get_is_owner(self, obj):
         """
-        Check if the requesting user is the owner of the profile.
+        Check if the requesting user is the
+        owner of the profile.
         """
+
         request = self.context["request"]
         return request.user == obj.owner
 
@@ -27,6 +27,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         Get the ID of the follower relationship between
         the requesting user and the profile owner.
         """
+
         user = self.context["request"].user
         if user.is_authenticated:
             following = Follower.objects.filter(
@@ -36,9 +37,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         return None
 
     class Meta:
-        """
-        Meta class for ProfileSerializer.
-        """
+        """ Meta class for ProfileSerializer. """
 
         model = Profile
         fields = [
