@@ -11,19 +11,21 @@ class BlogCategoryList(generics.ListAPIView):
     """
     API endpoint that returns a list of blog categories.
     """
+
     serializer_class = BlogCategorySerializer
 
     def get_queryset(self):
         """
         Get queryset of blog categories.
         """
-        return [{'category': choice[0]} for choice in Blog.CATEGORY_CHOICES]
+        return [{"category": choice[0]} for choice in Blog.CATEGORY_CHOICES]
 
 
 class BlogList(generics.ListCreateAPIView):
     """
     API endpoint that returns a list of blogs or creates a new blog.
     """
+
     serializer_class = BlogSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filter_backends = [
@@ -32,25 +34,25 @@ class BlogList(generics.ListCreateAPIView):
         DjangoFilterBackend,
     ]
     filterset_fields = [
-        'owner__followed__owner__profile',
-        'likes__owner__profile',
-        'owner__profile',
+        "owner__followed__owner__profile",
+        "likes__owner__profile",
+        "owner__profile",
     ]
     search_fields = [
-        'owner__username',
-        'title',
+        "owner__username",
+        "title",
     ]
     ordering_fields = [
-        'likes_count',
-        'comments_count',
-        'likes__created_at',
+        "likes_count",
+        "comments_count",
+        "likes__created_at",
     ]
 
     def get_queryset(self):
         """
         Get queryset of blogs.
         """
-        category = self.kwargs.get('category')
+        category = self.kwargs.get("category")
 
         # Check if the category is valid based on the
         # first elements of the tuples in CATEGORY_CHOICES
@@ -58,9 +60,9 @@ class BlogList(generics.ListCreateAPIView):
             raise Http404("Invalid category")
 
         queryset = Blog.objects.annotate(
-            likes_count=Count('likes', distinct=True),
-            comments_count=Count('comment', distinct=True)
-        ).order_by('-created_at')
+            likes_count=Count("likes", distinct=True),
+            comments_count=Count("comment", distinct=True),
+        ).order_by("-created_at")
 
         if category:
             queryset = queryset.filter(category=category)
@@ -71,7 +73,7 @@ class BlogList(generics.ListCreateAPIView):
         """
         Perform creation of a new blog.
         """
-        category = self.kwargs.get('category')
+        category = self.kwargs.get("category")
 
         # Check if the category is valid based on the
         #  first elements of the tuples in CATEGORY_CHOICES
@@ -85,9 +87,10 @@ class BlogDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     API endpoint that retrieves, updates or deletes a specific blog.
     """
+
     serializer_class = BlogSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Blog.objects.annotate(
-        likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
-    ).order_by('-created_at')
+        likes_count=Count("likes", distinct=True),
+        comments_count=Count("comment", distinct=True),
+    ).order_by("-created_at")
