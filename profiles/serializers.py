@@ -7,7 +7,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     """
     Serializer for the Profile model.
     """
-    owner = serializers.ReadOnlyField(source='owner.username')
+
+    owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
     following_id = serializers.SerializerMethodField()
     blogs_count = serializers.ReadOnlyField()
@@ -18,7 +19,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         """
         Check if the requesting user is the owner of the profile.
         """
-        request = self.context['request']
+        request = self.context["request"]
         return request.user == obj.owner
 
     def get_following_id(self, obj):
@@ -26,7 +27,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         Get the ID of the follower relationship between
         the requesting user and the profile owner.
         """
-        user = self.context['request'].user
+        user = self.context["request"].user
         if user.is_authenticated:
             following = Follower.objects.filter(
                 owner=user, followed=obj.owner
@@ -38,9 +39,19 @@ class ProfileSerializer(serializers.ModelSerializer):
         """
         Meta class for ProfileSerializer.
         """
+
         model = Profile
         fields = [
-            'id', 'owner', 'created_at', 'updated_at', 'name',
-            'bio', 'image', 'is_owner', 'following_id',
-            'blogs_count', 'followers_count', 'following_count',
+            "id",
+            "owner",
+            "created_at",
+            "updated_at",
+            "name",
+            "bio",
+            "image",
+            "is_owner",
+            "following_id",
+            "blogs_count",
+            "followers_count",
+            "following_count",
         ]
