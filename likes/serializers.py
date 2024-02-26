@@ -7,14 +7,16 @@ class LikeSerializer(serializers.ModelSerializer):
     """
     Serializer for the Like model.
     """
-    owner = serializers.ReadOnlyField(source='owner.username')
+
+    owner = serializers.ReadOnlyField(source="owner.username")
 
     class Meta:
         """
         Meta class for LikeSerializer.
         """
+
         model = Like
-        fields = ['id', 'created_at', 'owner', 'blog']
+        fields = ["id", "created_at", "owner", "blog"]
 
     def create(self, validated_data):
         """
@@ -33,4 +35,4 @@ class LikeSerializer(serializers.ModelSerializer):
         try:
             return super().create(validated_data)
         except IntegrityError:
-            raise serializers.ValidationError({'detail': 'possible duplicate'})
+            raise serializers.ValidationError({"detail": "possible duplicate"})
