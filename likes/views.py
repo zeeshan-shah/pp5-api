@@ -8,6 +8,7 @@ class LikeList(generics.ListCreateAPIView):
     """
     List or create likes.
     """
+
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = LikeSerializer
     queryset = Like.objects.all()
@@ -23,6 +24,7 @@ class LikeDetail(generics.RetrieveDestroyAPIView):
     """
     Retrieve or delete a like if the user owns it.
     """
+
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = LikeSerializer
     queryset = Like.objects.all()
