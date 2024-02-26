@@ -3,9 +3,7 @@ from .models import ContactTicket
 
 
 class ContactTicketSerializer(serializers.ModelSerializer):
-    """
-    Serializer for the ContactTicket model.
-    """
+    """ Serializer for the ContactTicket model. """
 
     owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
@@ -13,14 +11,16 @@ class ContactTicketSerializer(serializers.ModelSerializer):
 
     def get_is_owner(self, obj):
         """
-        Determine if the current user is the owner of the contact ticket.
+        Determine if the current user is the
+        owner of the contact ticket.
         """
         request = self.context.get("request")
         return request.user == obj.owner
 
     def get_ticket_status(self, obj):
         """
-        Get the display value of the ticket status.
+        Get the display value of the
+        ticket status.
         """
         return obj.get_ticket_status_display()
 
