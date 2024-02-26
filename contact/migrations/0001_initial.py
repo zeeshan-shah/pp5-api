@@ -15,20 +15,58 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ContactTicket',
+            name="ContactTicket",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('category', models.CharField(choices=[('1', 'Blog Inquiry'), ('2', 'Technical Support'), ('3', 'Business Partnership'), ('4', 'General Inquiry')], default='1', max_length=1)),
-                ('subject', models.CharField(max_length=255)),
-                ('message', models.TextField()),
-                ('ticket_status', models.CharField(choices=[('0', 'Pending'), ('1', 'In Progress'), ('2', 'Resolved'), ('3', 'On Hold')], default='0', max_length=1)),
-                ('admin_response', models.TextField(blank=True, null=True)),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "category",
+                    models.CharField(
+                        choices=[
+                            ("1", "Blog Inquiry"),
+                            ("2", "Technical Support"),
+                            ("3", "Business Partnership"),
+                            ("4", "General Inquiry"),
+                        ],
+                        default="1",
+                        max_length=1,
+                    ),
+                ),
+                ("subject", models.CharField(max_length=255)),
+                ("message", models.TextField()),
+                (
+                    "ticket_status",
+                    models.CharField(
+                        choices=[
+                            ("0", "Pending"),
+                            ("1", "In Progress"),
+                            ("2", "Resolved"),
+                            ("3", "On Hold"),
+                        ],
+                        default="0",
+                        max_length=1,
+                    ),
+                ),
+                ("admin_response", models.TextField(blank=True, null=True)),
+                (
+                    "owner",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-updated_at'],
+                "ordering": ["-updated_at"],
             },
         ),
     ]
