@@ -1,8 +1,10 @@
 # API for Blogify: A Dynamic Blogging Platform with Django REST Framework
 
-Developer: Zeeshan Shah
+**Developer: Zeeshan Shah**
 
 This repository contains the API set up using Django REST Framework for the Blogify front-end application.
+
+The live link for the API can be found [HERE](https://pp5-api-e56cee5dddfa.herokuapp.com/).
 
 ## Table of Contents
   - [User Stories](#user-stories)
@@ -66,6 +68,13 @@ This repository contains the API set up using Django REST Framework for the Blog
 4. As a site owner/developer, I strive to empower users with the ability to update their tickets, facilitating efficient communication and issue resolution.
 5. As a site owner/developer, I respect user preferences and privacy by allowing them to delete their tickets when no longer needed.
 
+### Advertisement Management
+
+1. As an admin, I can create an advertisement to add it to the website.
+2. As an admin, I can edit an existing advertisement to update its details or content.
+3. As an admin, I can delete an advertisement to remove it from the website.
+4. As an admin, I can publish an advertisement on the website so that users can view it.
+5. As a developer, I allow users to contact the admin for advertisement queries.
 
 ## Technologies Used
 
@@ -187,9 +196,19 @@ To maintain transparency and track progress efficiently, I've implemented a Kanb
 | 34       | As a user, I can remove a bookmark from a blog that I've previously saved so that I can manage my list of bookmarked blogs and remove unwanted ones. | Must Have | 2 |
 
 
+### Advertisement
+| **ID #** | **User Story** | **Label** | **Story Points** |
+|----------|----------------|-----------|------------------|
+| 35       | As an admin, I can create a new advertisement so that I can add it to the website. | Must Have | 2 |
+| 36       | As an admin, I can edit an existing advertisement so that I can update its details or content. | Must Have | 2 |
+| 37       | As an admin, I can delete an advertisement so that I can remove it from the website. | Must Have | 2 |
+| 38       | As an admin, I can publish an advertisement on the website so that users can view it. | Must Have | 2 |
+| 39       | As an user, I can contact the admin for advertisement queries so that I can get information or assistance regarding ads. | Should Have | 2 |
+
+
 ## Database
 
-To provide a comprehensive overview of the database schema, we will delve into the structure and relationships of each model within the system.
+To provide a comprehensive overview of the database schema, I will delve into the structure and relationships of each model within the system.
 
 ### Blog Model:
 - **Fields:**
@@ -284,6 +303,20 @@ To provide a comprehensive overview of the database schema, we will delve into t
     - The category field offers predefined choices defined by CATEGORY_CHOICES, similar to the Blog model.
     - Upcoming blogs are ordered based on their release date.
 
+### Advertisement Model:
+- **Fields:**
+    - title: CharField
+    - content: TextField
+    - advertisement_type: CharField (choices: ADVERTISEMENT_TYPES)
+    - image: ImageField
+    - video_url: URLField (nullable)
+    - target_url: URLField
+    - start_date: DateField
+    - end_date: DateField
+    - created_at: DateTimeField (auto_now_add=True)
+- **Additional Information:**
+    - The advertisement_type field offers predefined choices defined by ADVERTISEMENT_TYPES, including types like banner, video, popup, text, etc.
+    - Advertisements are ordered based on their creation date.
 
 <details>
   <summary>Database Schema</summary>
@@ -306,6 +339,19 @@ Flake8, a powerful Python linter, was employed to enforce adherence to the PEP 8
 
 Flake8 was used to analyze the codebase and ensure adherence to the PEP 8 style guide. It helped identify and address violations related to indentation, naming conventions, and line length, among other stylistic elements. By resolving these issues, the codebase maintains consistency and readability, enhancing overall quality and maintainability.
 </details>
+
+### Pycodestyle
+
+Pycodestyle, formerly known as Pep8, is a Python style guide checker. It ensures that the codebase follows the PEP 8 style conventions, covering aspects such as indentation, variable naming, line length, and more. By incorporating Pycodestyle into the development workflow, developers can maintain consistency and readability throughout the codebase.
+
+<details>
+  <summary>Pycodestyle Validation</summary>
+
+![Pycodestyle Validation](documentation/validation/pycodestyle.png)
+
+Pycodestyle was utilized to examine the codebase and verify compliance with the PEP 8 style guide. It facilitated the identification and resolution of issues related to indentation, variable naming, and line length, among other style considerations. By addressing these concerns, the codebase upholds consistency and clarity, contributing to improved quality and maintainability.
+</details>
+
 
 ### Code Institute Linter
 
@@ -478,6 +524,32 @@ The `serializers.py` file for the Upcoming Blogs app was validated using the Cod
 
 The Code Institute Python Linter was used to validate the `views.py` file for the Upcoming Blogs app. This validation process ensures compliance with the coding standards and best practices recommended by Code Institute. By validating the views, the codebase remains consistent, readable, and maintainable, facilitating efficient request handling and response generation.
 </details>
+
+
+<details>
+  <summary>CI Linter - Validation of Advertisement models.py</summary>
+
+![CI Linter - Validation of Advertisement models.py](documentation/validation/linteradvertisementsmodels.png)
+
+The Code Institute Python Linter was used to validate the `models.py` file for the Advertisement app. This validation process ensures compliance with the coding standards and best practices recommended by Code Institute. By validating the models, the codebase maintains consistency and readability, facilitating efficient data modeling and interaction with the database.
+</details>
+
+<details>
+  <summary>CI Linter - Validation of Advertisement serializers.py</summary>
+
+![CI Linter - Validation of Advertisement serializers.py](documentation/validation/linteradvertisementsserializer.png)
+
+The `serializers.py` file for the Advertisement app was validated using the Code Institute Python Linter. This validation process ensures compliance with the coding standards and best practices recommended by Code Institute. By validating the serializers, the codebase remains consistent, readable, and maintainable, facilitating efficient data serialization and deserialization.
+</details>
+
+<details>
+  <summary>CI Linter - Validation of Advertisement views.py</summary>
+
+![CI Linter - Validation of Advertisement views.py](documentation/validation/linteradvertisementsviews.png)
+
+The Code Institute Python Linter was used to validate the `views.py` file for the Advertisement app. This validation process ensures compliance with the coding standards and best practices recommended by Code Institute. By validating the views, the codebase remains consistent, readable, and maintainable, facilitating efficient request handling and response generation.
+</details>
+
 
 ## Testing
 
@@ -757,6 +829,84 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 </details>
 
 
+### Advertisement
+
+#### Ad Creation
+
+* As an admin, I can create a new advertisement so that I can add it to the website.
+
+| **Step**                              | **Expected Result**             | **Actual Result** |
+| ------------------------------------- | ------------------------------- | ----------------- |
+| Log in as admin and navigate to the advertisement creation page. | Advertisement creation page is accessible. | &#10004; |
+| Fill out the required details such as title, content, and image for the advertisement. | Advertisement details are filled correctly. | &#10004; |
+| Click on the "Save" button to create the advertisement. | Advertisement is successfully created and saved. | &#10004; |
+
+<details>
+  <summary>Ad Creation</summary>
+  <img src="documentation/testing/addadvertisement.png" alt="addadvertisement.png">
+</details>
+
+#### Ad Editing
+
+* As an admin, I can edit an existing advertisement so that I can update its details or content.
+
+| **Step**                              | **Expected Result**             | **Actual Result** |
+| ------------------------------------- | ------------------------------- | ----------------- |
+| Log in as admin and navigate to the advertisement editing page. | Advertisement editing page is accessible. | &#10004; |
+| Select the advertisement to be edited from the list of existing ads. | Advertisement details are displayed for editing. | &#10004; |
+| Update the necessary details or content of the advertisement. | Advertisement details are successfully updated. | &#10004; |
+| Click on the "Save" button to save the edits. | Edits are successfully saved and reflected in the advertisement. | &#10004; |
+
+<details>
+  <summary>Ad Editing</summary>
+    <img src="documentation/testing/editadvertisement.png" alt="editadvertisement.png">
+</details>
+
+#### Ad Deletion
+
+* As an admin, I can delete an advertisement so that I can remove it from the website.
+
+| **Step**                              | **Expected Result**             | **Actual Result** |
+| ------------------------------------- | ------------------------------- | ----------------- |
+| Log in as admin and navigate to the advertisement management page. | Advertisement management page is accessible. | &#10004; |
+| Select the advertisement to be deleted from the list of existing ads. | Advertisement details are displayed with delete option. | &#10004; |
+| Click on the "Delete" button to delete the advertisement. | Confirmation prompt appears for deleting the advertisement. | &#10004; |
+| Confirm the deletion action. | Advertisement is successfully deleted from the website. | &#10004; |
+
+
+<details>
+  <summary>Ad Deletion</summary>
+    <img src="documentation/testing/deleteadvertisement.png" alt="deleteadvertisement.png">
+</details>
+
+
+### Automated Testing
+
+Automated testing plays a crucial role in ensuring the reliability and robustness of software applications. In our project, I employed a comprehensive approach to automated testing using industry-standard tools and methodologies.
+
+#### Django Rest Framework APITestCase
+
+Our primary tool for automated testing was the Django Rest Framework APITestCase. This framework provided us with a structured and efficient way to test our API endpoints and functionalities. By utilizing this framework, I was able to simulate various user interactions and scenarios, ensuring that our APIs behaved as expected under different conditions.
+
+<details>
+  <summary> Django Rest Framework APITestCase</summary>
+  <img src="documentation/testing/djangoapitestcase.png" alt="djangoapitestcase.png">
+</details>
+
+#### Coverage Python
+
+In addition to API testing, I also utilized Coverage Python to measure the extent of our test coverage. Test coverage is a critical metric that indicates how much of our codebase is exercised by our automated tests. Our coverage report revealed that our tests covered approximately 95% of our project's codebase, demonstrating a high level of test coverage.
+
+<details>
+  <summary> Coverage Report</summary>
+  <img src="documentation/testing/coverage1.png" alt="coverage1.png">
+  <img src="documentation/testing/coverage2.png" alt="coverage2.png">
+  <img src="documentation/testing/coverage3.png" alt="coverage3.png">
+</details>
+
+By combining Django Rest Framework APITestCase and Coverage Python, I ensured not only the functionality but also the reliability and comprehensiveness of our automated testing suite. This meticulous approach to testing contributes to the overall quality and stability of our software application.
+
+
 ## Deployment on Heroku
 
 Deploying your website on Heroku requires meticulous preparation and configuration. Follow these comprehensive steps to ensure a seamless deployment process:
@@ -863,6 +1013,6 @@ Before initiating the deployment process, it's essential to set up the necessary
 
 Special thanks to:
 
-Lauren-Nicole: My helpful mentor at Code Institute who was always there to offer useful tips and constructive feedback.
+Julia: My helpful mentor at Code Institute who was always there to offer useful tips and constructive feedback.
 
 
