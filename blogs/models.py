@@ -3,9 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Blog(models.Model):
-    """
-    Model representing a blog post.
-    """
+    """ Model representing a blog post. """
 
     CATEGORY_CHOICES = [
         ("science", "Science and Technology"),
@@ -40,15 +38,13 @@ class Blog(models.Model):
         verbose_name_plural = "Blogs"
 
     def __str__(self):
-        """
-        String for representing the Blog object.
-        """
+        """ String for representing the Blog object. """
+
         return f"{self.title} by {self.owner.username}"
 
     def get_short_description(self):
-        """
-        Return a short description for the blog post.
-        """
+        """ Return a short description for the blog post. """
+
         if len(self.description) > 100:
             return self.description[:100] + "..."
         else:
