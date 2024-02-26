@@ -4,9 +4,7 @@ from django.utils import timezone
 
 
 class UpcomingBlog(models.Model):
-    """
-    Model representing upcoming blogs.
-    """
+    """ Model representing upcoming blogs. """
 
     CATEGORY_CHOICES = [
         ("science", "Science and Technology"),
@@ -23,22 +21,21 @@ class UpcomingBlog(models.Model):
     release_date = models.DateField()
 
     class Meta:
-        """
-        Meta class for UpcomingBlog model.
-        """
+        """ Meta class for UpcomingBlog model. """
 
         ordering = ["release_date"]
 
     def __str__(self):
         """
-        String representation of the UpcomingBlog object.
+        String representation of the
+        UpcomingBlog object.
         """
+
         return f"{self.title} by {self.owner.username}"
 
     def release_date_has_passed(self):
-        """
-        Check if the release date has passed.
-        """
+        """ Check if the release date has passed. """
+
         today = timezone.now().date()
         return self.release_date < today
 
@@ -47,6 +44,7 @@ class UpcomingBlog(models.Model):
         Save method overridden to delete the entry
         if the release date has passed.
         """
+
         if self.release_date_has_passed():
             # Delete the entry if the release date has passed
             self.delete()
