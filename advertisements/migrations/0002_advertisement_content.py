@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('advertisements', '0001_initial'),
+        ("advertisements", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='advertisement',
-            name='content',
-            field=models.TextField(blank=True, max_length=500, verbose_name='Content'),
+            model_name="advertisement",
+            name="content",
+            field=models.TextField(
+                blank=True, max_length=500, verbose_name="Content"
+            ),
         ),
     ]

@@ -7,27 +7,67 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Advertisement',
+            name="Advertisement",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255, verbose_name='Title')),
-                ('advertisement_type', models.CharField(choices=[('banner', 'Banner Ad'), ('video', 'Video Ad'), ('popup', 'Popup Ad'), ('text', 'Text Ad')], max_length=20, verbose_name='Ad Type')),
-                ('image', models.ImageField(default='default/ad-here.jpg', upload_to='images/', verbose_name='Image')),
-                ('video_url', models.URLField(blank=True, max_length=500, null=True, verbose_name='Video URL')),
-                ('target_url', models.URLField(max_length=500, verbose_name='Target URL')),
-                ('start_date', models.DateField(verbose_name='Start Date')),
-                ('end_date', models.DateField(verbose_name='End Date')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(max_length=255, verbose_name="Title"),
+                ),
+                (
+                    "advertisement_type",
+                    models.CharField(
+                        choices=[
+                            ("banner", "Banner Ad"),
+                            ("video", "Video Ad"),
+                            ("popup", "Popup Ad"),
+                            ("text", "Text Ad"),
+                        ],
+                        max_length=20,
+                        verbose_name="Ad Type",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        default="default/ad-here.jpg",
+                        upload_to="images/",
+                        verbose_name="Image",
+                    ),
+                ),
+                (
+                    "video_url",
+                    models.URLField(
+                        blank=True,
+                        max_length=500,
+                        null=True,
+                        verbose_name="Video URL",
+                    ),
+                ),
+                (
+                    "target_url",
+                    models.URLField(max_length=500, verbose_name="Target URL"),
+                ),
+                ("start_date", models.DateField(verbose_name="Start Date")),
+                ("end_date", models.DateField(verbose_name="End Date")),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'verbose_name': 'Advertisement',
-                'verbose_name_plural': 'Advertisements',
-                'ordering': ['-created_at'],
+                "verbose_name": "Advertisement",
+                "verbose_name_plural": "Advertisements",
+                "ordering": ["-created_at"],
             },
         ),
     ]
