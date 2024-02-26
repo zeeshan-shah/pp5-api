@@ -10,7 +10,7 @@ class BlogCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Blog
-        fields = ['category']
+        fields = ["category"]
 
 
 class BlogSerializer(serializers.ModelSerializer):
@@ -18,10 +18,10 @@ class BlogSerializer(serializers.ModelSerializer):
     Serializer for the Blog model.
     """
 
-    owner = serializers.ReadOnlyField(source='owner.username')
+    owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
-    profile_id = serializers.ReadOnlyField(source='owner.profile.id')
-    profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    profile_id = serializers.ReadOnlyField(source="owner.profile.id")
+    profile_image = serializers.ReadOnlyField(source="owner.profile.image.url")
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
@@ -31,14 +31,14 @@ class BlogSerializer(serializers.ModelSerializer):
         Validate the uploaded image.
         """
         if value.size > 2 * 1024 * 1024:
-            raise serializers.ValidationError('Image size larger than 2MB!')
+            raise serializers.ValidationError("Image size larger than 2MB!")
         if value.image.height > 4096:
             raise serializers.ValidationError(
-                'Image height larger than 4096px!'
+                "Image height larger than 4096px!"
             )
         if value.image.width > 4096:
             raise serializers.ValidationError(
-                'Image width larger than 4096px!'
+                "Image width larger than 4096px!"
             )
         return value
 
@@ -46,14 +46,14 @@ class BlogSerializer(serializers.ModelSerializer):
         """
         Determine if the current user is the owner of the blog.
         """
-        request = self.context.get('request')
+        request = self.context.get("request")
         return request.user == obj.owner
 
     def get_like_id(self, obj):
         """
         Get the ID of the like associated with the current user and blog.
         """
-        user = self.context['request'].user
+        user = self.context["request"].user
         if user.is_authenticated:
             like = Like.objects.filter(owner=user, blog=obj).first()
             return like.id if like else None
@@ -62,8 +62,18 @@ class BlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
         fields = [
-            'id', 'owner', 'is_owner', 'profile_id',
-            'profile_image', 'created_at', 'updated_at',
-            'title', 'content', 'image', 'like_id',
-            'likes_count', 'comments_count', 'category',
+            "id",
+            "owner",
+            "is_owner",
+            "profile_id",
+            "profile_image",
+            "created_at",
+            "updated_at",
+            "title",
+            "content",
+            "image",
+            "like_id",
+            "likes_count",
+            "comments_count",
+            "category",
         ]
