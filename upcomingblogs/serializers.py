@@ -3,24 +3,22 @@ from .models import UpcomingBlog
 
 
 class UpcomingBlogSerializer(serializers.ModelSerializer):
-    """
-    Serializer for the UpcomingBlog model.
-    """
+    """ Serializer for the UpcomingBlog model. """
 
     owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         """
-        Check if the requesting user is the owner of the blog.
+        Check if the requesting user is the
+        owner of the blog.
         """
+
         request = self.context.get("request")
         return request.user == obj.owner
 
     class Meta:
-        """
-        Meta class for UpcomingBlogSerializer.
-        """
+        """ Meta class for UpcomingBlogSerializer. """
 
         model = UpcomingBlog
         fields = [
