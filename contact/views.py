@@ -8,6 +8,7 @@ class ContactTicketListCreateView(generics.ListCreateAPIView):
     """
     List or create contact tickets.
     """
+
     serializer_class = ContactTicketSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
@@ -28,6 +29,7 @@ class ContactTicketDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a contact ticket if the user owns it.
     """
+
     serializer_class = ContactTicketSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
