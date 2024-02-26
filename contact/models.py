@@ -18,9 +18,7 @@ CONTACT_CATEGORIES = (
 
 
 class ContactTicket(models.Model):
-    """
-    Model representing a contact ticket.
-    """
+    """ Model representing a contact ticket. """
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -39,7 +37,6 @@ class ContactTicket(models.Model):
         ordering = ["-updated_at"]
 
     def __str__(self):
-        """
-        String representation of the contact ticket.
-        """
+        """ String representation of the contact ticket. """
+        
         return f"Contact Ticket #{self.id} - {self.subject}"
