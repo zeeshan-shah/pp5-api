@@ -5,9 +5,7 @@ from likes.serializers import LikeSerializer
 
 
 class LikeList(generics.ListCreateAPIView):
-    """
-    List or create likes.
-    """
+    """ List or create likes. """
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = LikeSerializer
@@ -15,14 +13,17 @@ class LikeList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         """
-        Save the like with the current user as the owner.
+        Save the like with the current user
+        as the owner.
         """
+
         serializer.save(owner=self.request.user)
 
 
 class LikeDetail(generics.RetrieveDestroyAPIView):
     """
-    Retrieve or delete a like if the user owns it.
+    Retrieve or delete a like if the
+    user owns it.
     """
 
     permission_classes = [IsOwnerOrReadOnly]
