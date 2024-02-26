@@ -3,9 +3,7 @@ from .models import Advertisement
 
 
 class AdvertisementSerializer(serializers.ModelSerializer):
-    """
-    Serializer for the Advertisement model.
-    """
+    """ Serializer for the Advertisement model. """
 
     class Meta:
         model = Advertisement
