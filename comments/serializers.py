@@ -7,15 +7,14 @@ class CommentSerializer(serializers.ModelSerializer):
     """
     Serializer for the Comment model.
     """
-    owner = serializers.ReadOnlyField(source='owner.username')
+
+    owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(
-        source='owner.profile.id',
-        allow_null=True
+        source="owner.profile.id", allow_null=True
     )
     profile_image = serializers.ReadOnlyField(
-        source='owner.profile.image.url',
-        allow_null=True
+        source="owner.profile.image.url", allow_null=True
     )
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
@@ -24,7 +23,7 @@ class CommentSerializer(serializers.ModelSerializer):
         """
         Determine if the current user is the owner of the comment.
         """
-        request = self.context.get('request')
+        request = self.context.get("request")
         return request.user == obj.owner
 
     def get_created_at(self, obj):
@@ -42,8 +41,15 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = [
-            'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
-            'blog', 'created_at', 'updated_at', 'content'
+            "id",
+            "owner",
+            "is_owner",
+            "profile_id",
+            "profile_image",
+            "blog",
+            "created_at",
+            "updated_at",
+            "content",
         ]
 
 
@@ -51,4 +57,5 @@ class CommentDetailSerializer(CommentSerializer):
     """
     Serializer for detailed representation of a comment.
     """
-    blog = serializers.ReadOnlyField(source='blog.id', allow_null=True)
+
+    blog = serializers.ReadOnlyField(source="blog.id", allow_null=True)
