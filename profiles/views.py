@@ -8,7 +8,8 @@ from .serializers import ProfileSerializer
 
 class ProfileList(generics.ListAPIView):
     """
-    API endpoint that returns a list of profiles.
+    API endpoint that returns a list
+    of profiles.
     """
 
     queryset = Profile.objects.annotate(
@@ -36,7 +37,8 @@ class ProfileList(generics.ListAPIView):
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
-    API endpoint that retrieves or updates a specific profile.
+    API endpoint that retrieves or updates
+    a specific profile.
     """
 
     permission_classes = [IsOwnerOrReadOnly]
