@@ -75,23 +75,35 @@ The live link for the API can be found [HERE](https://pp5-api-e56cee5dddfa.herok
 3. As an admin, I can delete an advertisement to remove it from the website.
 4. As an admin, I can publish an advertisement on the website so that users can view it.
 5. As a developer, I allow users to contact the admin for advertisement queries.
-
 ## Technologies Used
 
 ### Languages & Frameworks
 
 - Python 3.9.17
+
+### Frameworks
+
+- Django
 - Django Rest Framework
+
+### Databases
+
+- SQLite: Utilized as a development database.
+- PostgreSQL: Chosen for storing all project data.
 
 ### Libraries & Tools
 
-- [Cloudinary](https://cloudinary.com/): Utilized for efficient storage and management of images for both profiles and events.
-- [CI Python Linter](https://pep8ci.herokuapp.com/): Employed for meticulous validation of Python files, ensuring adherence to PEP 8 standards.
-- [Lucidcharts](https://lucid.app/): Leveraged to meticulously design and document the data model architecture, enhancing project clarity and organization.
-- [Gitpod](https://gitpod.io): Serving as the Integrated Development Environment (IDE), it facilitated seamless code composition and integration with GitHub.
-- [GitHub](https://github.com/): Acted as the primary remote repository for storing and managing project code, fostering collaborative development and version control.
-- [Heroku](https://heroku.com): Selected as the cloud platform for project deployment, ensuring seamless transition to a live environment and optimal scalability.
-- [Django REST Framework](https://www.django-rest-framework.org/): Chosen as the robust API toolkit, facilitating efficient development of the back-end API.
+- [Cloudinary](https://cloudinary.com/): Employed for efficient storage and management of images for both profiles and events.
+- [CI Python Linter](https://pep8ci.herokuapp.com/): Utilized for meticulous validation of Python files, ensuring adherence to PEP 8 standards.
+- [DrawSQL](https://drawsql.app/): Leveraged to meticulously design and document the data model architecture, enhancing project clarity and organization.
+- [Gitpod](https://gitpod.io): Integrated Development Environment (IDE) facilitating seamless code composition and integration with GitHub.
+- [Git](https://git-scm.com/): Version control system used to manage the code.
+- [Pip3](https://pypi.org/project/pip/): Package manager used to install dependencies.
+- [Gunicorn](https://gunicorn.org/): Web server used to run the website.
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/open/): Utilized for debugging the website.
+- [PEP8](https://pep8.org/): Employed to validate Python code.
+- [GitHub](https://github.com/): Primary remote repository for storing and managing project code, fostering collaborative development and version control.
+- [Heroku](https://heroku.com): Chosen as the cloud platform for project deployment, ensuring seamless transition to a live environment and optimal scalability.
 - [Django AllAuth](https://django-allauth.readthedocs.io/en/latest/index.html): Integrated as a crucial API module for streamlined user authentication and authorization processes.
 - [Psycopg2](https://www.psycopg.org/docs/): Adopted as the PostgreSQL database adaptor, ensuring seamless connectivity and interaction with the PostgreSQL database.
 - [PostgreSQL from Code Institute](https://dbs.ci-dbs.net/): Utilized as the reliable database hosting service, ensuring robust data storage and management capabilities.
