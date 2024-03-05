@@ -152,6 +152,8 @@ Additionally, I've organized user stories into EPICs to categorize them based on
 
 To maintain transparency and track progress efficiently, I've implemented a Kanban board. This board provides a clear overview of tasks in progress, backlog items, and completed tasks, ensuring streamlined project management and collaboration.
 
+Here is the link to the [Kanban board](https://github.com/users/zeeshan-shah/projects/4).
+
 <details>
   <summary>View Kanban Board</summary>
   <img src="documentation/images/kanbanboard.png" alt="kanbanboard.png screenshot">
@@ -344,7 +346,7 @@ To provide a comprehensive overview of the database schema, I will delve into th
     - Advertisements are ordered based on their creation date.
 
 <details>
-  <summary>Database Schema</summary>
+  <summary><strong>Database Schema</strong></summary>
   <img src="documentation/images/dbschema.png" alt="databaseschema.png screenshot">
 </details>
 
@@ -1030,12 +1032,14 @@ Before initiating the deployment process, it's essential to set up the necessary
 
 - The code for this project was written with the guidance of Code Institute's walkthrough project [drf-api](https://github.com/Code-Institute-Solutions/drf-api).
 
+- [Heroku](https://www.heroku.com/): The project is hosted on Heroku, a cloud platform as a service supporting several programming languages.
+
 - [GitHub](https://github.com/): I drew inspiration for the project's design from GitHub.
-  
+
 - [Django](https://www.djangoproject.com/): My project was built on the Django framework, which provided a solid foundation for development.
 
 - [Font Awesome](https://fontawesome.com/): I utilized Font Awesome for its extensive collection of free icons, enhancing the visual appeal of my project.
-  
+
 - [Google Fonts](https://fonts.google.com/): I leveraged Google Fonts to access a wide variety of free fonts, contributing to the project's aesthetic appeal.
 
 - [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb/related?hl=en): I utilized Responsive Viewer, a free platform, to test the responsiveness of my website across different devices and screen sizes.
