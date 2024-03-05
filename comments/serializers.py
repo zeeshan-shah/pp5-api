@@ -22,7 +22,7 @@ class CommentSerializer(serializers.ModelSerializer):
         Determine if the current user is the
         owner of the comment.
         """
-        
+
         request = self.context.get("request")
         return request.user == obj.owner
 
