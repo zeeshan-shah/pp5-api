@@ -60,7 +60,7 @@ class CommentTestCase(TestCase):
 
     def test_comment_detail_view(self):
         """ Test the detail view for a Comment instance. """
-        
+
         response = self.client.get(f"/comments/{self.comment.id}/")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["content"], "Test comment content")
