@@ -38,5 +38,5 @@ class ContactTicket(models.Model):
 
     def __str__(self):
         """ String representation of the contact ticket. """
-        
+
         return f"Contact Ticket #{self.id} - {self.subject}"
