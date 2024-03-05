@@ -5,14 +5,7 @@
 This repository contains the API set up using Django REST Framework for the Blogify front-end application.
 
 The live link for the API can be found [HERE](https://pp5-api-e56cee5dddfa.herokuapp.com/).
-
-## Table of Contents
-  - [User Stories](#user-stories)
-  - [Technologies Used](#technologies-used)
-  - [Database](#database)  
-  - [Validation](#validation)
-  - [Testing](#testing)
-  - [Credits](#credits)
+The live link for the Front-end Project can be found [HERE](https://blog-pp5-28d8f080bed0.herokuapp.com/).
 
 
 ## User Stories
@@ -75,6 +68,7 @@ The live link for the API can be found [HERE](https://pp5-api-e56cee5dddfa.herok
 3. As an admin, I can delete an advertisement to remove it from the website.
 4. As an admin, I can publish an advertisement on the website so that users can view it.
 5. As a developer, I allow users to contact the admin for advertisement queries.
+
 ## Technologies Used
 
 ### Languages & Frameworks
@@ -91,11 +85,32 @@ The live link for the API can be found [HERE](https://pp5-api-e56cee5dddfa.herok
 - SQLite: Utilized as a development database.
 - PostgreSQL: Chosen for storing all project data.
 
-### Libraries & Tools
+### Libraries
 
-- [Cloudinary](https://cloudinary.com/): Employed for efficient storage and management of images for both profiles and events.
+- [asgiref](https://pypi.org/project/asgiref/): ASGI framework used for handling asynchronous requests in Django.
+- [cloudinary](https://pypi.org/project/cloudinary/): Python SDK for Cloudinary, used for efficient storage and management of images.
+- [dj-database-url](https://pypi.org/project/dj-database-url/): Django utility for managing database configurations using URLs.
+- [dj-rest-auth](https://pypi.org/project/dj-rest-auth/): Authentication library for Django Rest Framework.
+- [django-allauth](https://pypi.org/project/django-allauth/): Integrated as a crucial API module for streamlined user authentication and authorization processes.
+- [django-cloudinary-storage](https://pypi.org/project/django-cloudinary-storage/): Django storage backend for Cloudinary.
+- [django-cors-headers](https://pypi.org/project/django-cors-headers/): Django middleware for handling Cross-Origin Resource Sharing (CORS).
+- [django-filter](https://pypi.org/project/django-filter/): Django app for filtering querysets dynamically.
+- [djangorestframework](https://pypi.org/project/djangorestframework/): Django toolkit for building Web APIs.
+- [djangorestframework-simplejwt](https://pypi.org/project/djangorestframework-simplejwt/): JSON Web Token authentication support for Django Rest Framework.
+- [oauthlib](https://pypi.org/project/oauthlib/): A generic, spec-compliant, thorough implementation of the OAuth request-signing logic.
+- [Pillow](https://pypi.org/project/Pillow/): Python Imaging Library (PIL) fork for image processing.
+- [psycopg2](https://pypi.org/project/psycopg2/): PostgreSQL database adapter for Python.
+- [PyJWT](https://pypi.org/project/PyJWT/): Python library for JSON Web Token implementation.
+- [python3-openid](https://pypi.org/project/python3-openid/): Python OpenID library.
+- [pytz](https://pypi.org/project/pytz/): World timezone definitions for Python.
+- [requests-oauthlib](https://pypi.org/project/requests-oauthlib/): OAuth library for Python Requests.
+- [sqlparse](https://pypi.org/project/sqlparse/): Non-validating SQL parser for Python.
+
+### Other Tools
+
 - [CI Python Linter](https://pep8ci.herokuapp.com/): Utilized for meticulous validation of Python files, ensuring adherence to PEP 8 standards.
 - [DrawSQL](https://drawsql.app/): Leveraged to meticulously design and document the data model architecture, enhancing project clarity and organization.
+- [PostgreSQL from Code Institute](https://dbs.ci-dbs.net/): Utilized as the reliable database hosting service, ensuring robust data storage and management capabilities.
 - [Gitpod](https://gitpod.io): Integrated Development Environment (IDE) facilitating seamless code composition and integration with GitHub.
 - [Git](https://git-scm.com/): Version control system used to manage the code.
 - [Pip3](https://pypi.org/project/pip/): Package manager used to install dependencies.
@@ -104,9 +119,7 @@ The live link for the API can be found [HERE](https://pp5-api-e56cee5dddfa.herok
 - [PEP8](https://pep8.org/): Employed to validate Python code.
 - [GitHub](https://github.com/): Primary remote repository for storing and managing project code, fostering collaborative development and version control.
 - [Heroku](https://heroku.com): Chosen as the cloud platform for project deployment, ensuring seamless transition to a live environment and optimal scalability.
-- [Django AllAuth](https://django-allauth.readthedocs.io/en/latest/index.html): Integrated as a crucial API module for streamlined user authentication and authorization processes.
-- [Psycopg2](https://www.psycopg.org/docs/): Adopted as the PostgreSQL database adaptor, ensuring seamless connectivity and interaction with the PostgreSQL database.
-- [PostgreSQL from Code Institute](https://dbs.ci-dbs.net/): Utilized as the reliable database hosting service, ensuring robust data storage and management capabilities.
+- [Cloudinary](https://cloudinary.com/): Employed for efficient storage and management of images for both profiles and events.
 
 
 ### Libraries for Heroku Deployment
@@ -571,7 +584,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As a visitor, I can register for an account so that I can have a personalized experience and contribute to the blog community.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Go to URL: `/dj-rest-auth/registration/` and fill up the signup form | Profile created | &#10004; |
 
@@ -594,7 +607,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As a registered user, I can log in so that I can access my account and perform actions that require authentication.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Go to URL: `/api-auth/login/?next=/` and fill up the signin form | User logged in | &#10004; |
 
@@ -607,7 +620,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As a content creator, I want to create a new blog post so that I can publish it for users to read.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Go to any blog category, for example: `/blogs/sports/`, and fill up the blog data and post | Blog is created! | &#10004; |
 
@@ -630,7 +643,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As a content creator, I want to update and modify existing blog posts so that I can make corrections or add new information.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Go to the blog, for example: `/blogs/sports/5/`, and fill up the updated blog data and click PUT button | Blog is updated! | &#10004; |
 
@@ -648,7 +661,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As a content creator, I want to delete blog posts that are no longer relevant or necessary so that users no longer have access to them.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Go to the blog URL, for example: `/blogs/sports/5/`, and click DELETE button | Blog is deleted! | &#10004; |
 
@@ -671,7 +684,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As a content creator or admin, I want to assign categories to blogs so that users can easily filter and find relevant content.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Go to the URL: `/blogs/`, the available categories are listed and can be chosen from while blog creation | Blog categories list can be seen! | &#10004; |
 
@@ -684,7 +697,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As a user, I want to view, add, and remove comments on blogs so that I can participate in discussions and maintain a constructive environment.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Go to the URL: `/comments/`, select the blog to be commented on, write a comment, and post | Comment is created! | &#10004; |
 
@@ -702,7 +715,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As a user, I want to schedule publication dates for upcoming blog posts so that I can plan and organize my content release schedule in advance.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Go to the URL: `/upcoming-blogs/`, fill the upcoming blog data form, and post | New entry for the upcoming blog is created! | &#10004; |
 
@@ -725,7 +738,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As a user, I can bookmark and un-bookmark blogs so that I can save content I enjoy and keep track of my favorite blogs.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Go to the URL: `/blogs/likes`, select the blog to be bookmarked | Blog is bookmarked successfully | &#10004; |
 | Go to the blog URL, click on the Delete button to remove the bookmark | Blog is un-bookmarked successfully | &#10004; |
@@ -754,7 +767,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As a user, I want to filter and search for blogs so that I can find specific content quickly and efficiently.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Go to the blog URL, click on the filter button, insert the searched keywords, and submit | The relevant blogs will appear in the blog list | &#10004; |
 
@@ -772,7 +785,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As a user, I can follow other users so that I can stay updated with their activities and content.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Go to the URL: `/followers`, select the profile to follow, and click Post | The followed profile will appear in the follower list | &#10004; |
 
@@ -790,7 +803,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As a user, I want to unfollow users so that I have control over my follow list and can manage my interests.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Go to the URL of the followed profile, for example: `/followers/1`, click on DELETE, and confirm delete | The followed profile will be unfollowed | &#10004; |
 
@@ -808,7 +821,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As a user, I can customize my profile by adding a name, bio, and profile picture so that other users can learn more about me.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Go to the URL of your profile, for example: `/profiles/1/`, add details to your profile, and click PUT | The details of your profile will be published | &#10004; |
 
@@ -826,7 +839,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As a user, I can contact the page owner through the contact page to ask any questions I might have.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Go to the URL: `/tickets/`, fill up the contact form, and POST | The contact form will be sent successfully! | &#10004; |
 
@@ -847,7 +860,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As an admin, I can create a new advertisement so that I can add it to the website.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Log in as admin and navigate to the advertisement creation page. | Advertisement creation page is accessible. | &#10004; |
 | Fill out the required details such as title, content, and image for the advertisement. | Advertisement details are filled correctly. | &#10004; |
@@ -862,7 +875,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As an admin, I can edit an existing advertisement so that I can update its details or content.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Log in as admin and navigate to the advertisement editing page. | Advertisement editing page is accessible. | &#10004; |
 | Select the advertisement to be edited from the list of existing ads. | Advertisement details are displayed for editing. | &#10004; |
@@ -878,7 +891,7 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 * As an admin, I can delete an advertisement so that I can remove it from the website.
 
-| **Step**                              | **Expected Result**             | **Actual Result** |
+| **Step**                              | **Expected Result**             | **Criteria Met** |
 | ------------------------------------- | ------------------------------- | ----------------- |
 | Log in as admin and navigate to the advertisement management page. | Advertisement management page is accessible. | &#10004; |
 | Select the advertisement to be deleted from the list of existing ads. | Advertisement details are displayed with delete option. | &#10004; |
@@ -894,11 +907,11 @@ The Code Institute Python Linter was used to validate the `views.py` file for th
 
 ### Automated Testing
 
-Automated testing plays a crucial role in ensuring the reliability and robustness of software applications. In our project, I employed a comprehensive approach to automated testing using industry-standard tools and methodologies.
+Automated testing plays a crucial role in ensuring the reliability and robustness of software applications. In my project, I employed a comprehensive approach to automated testing using industry-standard tools and methodologies.
 
 #### Django Rest Framework APITestCase
 
-Our primary tool for automated testing was the Django Rest Framework APITestCase. This framework provided us with a structured and efficient way to test our API endpoints and functionalities. By utilizing this framework, I was able to simulate various user interactions and scenarios, ensuring that our APIs behaved as expected under different conditions.
+My primary tool for automated testing was the Django Rest Framework APITestCase. This framework provided us with a structured and efficient way to test my API endpoints and functionalities. By utilizing this framework, I was able to simulate various user interactions and scenarios, ensuring that my APIs behaved as expected under different conditions.
 
 <details>
   <summary> Django Rest Framework APITestCase</summary>
@@ -907,7 +920,7 @@ Our primary tool for automated testing was the Django Rest Framework APITestCase
 
 #### Coverage Python
 
-In addition to API testing, I also utilized Coverage Python to measure the extent of our test coverage. Test coverage is a critical metric that indicates how much of our codebase is exercised by our automated tests. Our coverage report revealed that our tests covered approximately 95% of our project's codebase, demonstrating a high level of test coverage.
+In addition to API testing, I also utilized Coverage Python to measure the extent of my test coverage. Test coverage is a critical metric that indicates how much of my codebase is exercised by my automated tests. My coverage report revealed that my tests covered approximately 95% of my project's codebase, demonstrating a high level of test coverage.
 
 <details>
   <summary> Coverage Report</summary>
@@ -916,7 +929,7 @@ In addition to API testing, I also utilized Coverage Python to measure the exten
   <img src="documentation/testing/coverage3.png" alt="coverage3.png">
 </details>
 
-By combining Django Rest Framework APITestCase and Coverage Python, I ensured not only the functionality but also the reliability and comprehensiveness of our automated testing suite. This meticulous approach to testing contributes to the overall quality and stability of our software application.
+By combining Django Rest Framework APITestCase and Coverage Python, I ensured not only the functionality but also the reliability and comprehensiveness of my automated testing suite. This meticulous approach to testing contributes to the overall quality and stability of my software application.
 
 
 ## Deployment on Heroku
@@ -1013,18 +1026,26 @@ Before initiating the deployment process, it's essential to set up the necessary
 2. Click on the "Clone" button and copy the provided URL.
 3. Open your preferred IDE and execute the command `git clone <copied URL>` in the terminal to clone the repository locally.
 
-
 ## Credits
 
-### Code
+- The code for this project was written with the guidance of Code Institute's walkthrough project [drf-api](https://github.com/Code-Institute-Solutions/drf-api).
 
-- The code was written with the help of Code Institute walkthrough project [drf-api](https://github.com/Code-Institute-Solutions/drf-api)
+- [GitHub](https://github.com/): I drew inspiration for the project's design from GitHub.
+  
+- [Django](https://www.djangoproject.com/): My project was built on the Django framework, which provided a solid foundation for development.
 
+- [Font Awesome](https://fontawesome.com/): I utilized Font Awesome for its extensive collection of free icons, enhancing the visual appeal of my project.
+  
+- [Google Fonts](https://fonts.google.com/): I leveraged Google Fonts to access a wide variety of free fonts, contributing to the project's aesthetic appeal.
+
+- [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb/related?hl=en): I utilized Responsive Viewer, a free platform, to test the responsiveness of my website across different devices and screen sizes.
+
+- [Flaticon](https://www.flaticon.com/): I sourced some of my project's icons from Flaticon, enhancing its visual elements.
+
+- [Freepik](https://www.freepik.com/free-photos-vectors/blogger-logo): The project's logo was sourced from [Freepik](https://www.freepik.com/free-photos-vectors/blogger-logo).
 
 ### Acknowledgments
 
 Special thanks to:
 
-Julia: My helpful mentor at Code Institute who was always there to offer useful tips and constructive feedback.
-
-
+- [Julia Konovalova](https://github.com/IuliiaKonovalova/): My mentor at Code Institute, whose guidance, tips, and feedback were invaluable throughout the project's development journey.
